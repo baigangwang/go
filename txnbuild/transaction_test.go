@@ -10,7 +10,7 @@ import (
 
 func TestInflation(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "3556091187167235")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(3556091187167235))
 
 	inflation := Inflation{}
 
@@ -29,7 +29,7 @@ func TestInflation(t *testing.T) {
 
 func TestCreateAccount(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "9605939170639897")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(9605939170639897))
 
 	createAccount := CreateAccount{
 		Destination: "GCCOBXW2XQNUSL467IEILE6MMCNRR66SSVL4YQADUNYYNUVREF3FIV2Z",
@@ -50,7 +50,7 @@ func TestCreateAccount(t *testing.T) {
 
 func TestPayment(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "9605939170639898")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(9605939170639898))
 
 	payment := Payment{
 		Destination: "GB7BDSZU2Y27LYNLALKKALB52WS2IZWYBDGY6EQBLEED3TJOCVMZRH7H",
@@ -72,7 +72,7 @@ func TestPayment(t *testing.T) {
 
 func TestPaymentFailsIfNoAssetSpecified(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "9605939170639898")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(9605939170639898))
 
 	payment := Payment{
 		Destination: "GB7BDSZU2Y27LYNLALKKALB52WS2IZWYBDGY6EQBLEED3TJOCVMZRH7H",
@@ -93,7 +93,7 @@ func TestPaymentFailsIfNoAssetSpecified(t *testing.T) {
 
 func TestBumpSequence(t *testing.T) {
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp1.Address(), "9606132444168199")
+	sourceAccount := NewSimpleAccount(kp1.Address(), int64(9606132444168199))
 
 	bumpSequence := BumpSequence{
 		BumpTo: 9606132444168300,
@@ -113,7 +113,7 @@ func TestBumpSequence(t *testing.T) {
 
 func TestAccountMerge(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484298")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484298))
 
 	accountMerge := AccountMerge{
 		Destination: "GAS4V4O2B7DW5T7IQRPEEVCRXMDZESKISR7DVIGKZQYYV3OSQ5SH5LVP",
@@ -133,7 +133,7 @@ func TestAccountMerge(t *testing.T) {
 
 func TestManageData(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "3556091187167235")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(3556091187167235))
 
 	manageData := ManageData{
 		Name:  "Fruit preference",
@@ -155,7 +155,7 @@ func TestManageData(t *testing.T) {
 
 func TestManageDataRemoveDataEntry(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484309")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484309))
 
 	manageData := ManageData{
 		Name: "Fruit preference",
@@ -176,7 +176,7 @@ func TestManageDataRemoveDataEntry(t *testing.T) {
 func TestSetOptionsInflationDestination(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484315")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484315))
 
 	setOptions := SetOptions{
 		InflationDestination: NewInflationDestination(kp1.Address()),
@@ -196,7 +196,7 @@ func TestSetOptionsInflationDestination(t *testing.T) {
 
 func TestSetOptionsSetFlags(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484318")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484318))
 
 	setOptions := SetOptions{
 		SetFlags: []AccountFlag{AuthRequired, AuthRevocable},
@@ -216,7 +216,7 @@ func TestSetOptionsSetFlags(t *testing.T) {
 
 func TestSetOptionsClearFlags(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484319")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484319))
 
 	setOptions := SetOptions{
 		ClearFlags: []AccountFlag{AuthRequired, AuthRevocable},
@@ -236,7 +236,7 @@ func TestSetOptionsClearFlags(t *testing.T) {
 
 func TestSetOptionsMasterWeight(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484320")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484320))
 
 	setOptions := SetOptions{
 		MasterWeight: NewThreshold(10),
@@ -256,7 +256,7 @@ func TestSetOptionsMasterWeight(t *testing.T) {
 
 func TestSetOptionsThresholds(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484322")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484322))
 
 	setOptions := SetOptions{
 		LowThreshold:    NewThreshold(1),
@@ -278,7 +278,7 @@ func TestSetOptionsThresholds(t *testing.T) {
 
 func TestSetOptionsHomeDomain(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484325")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484325))
 
 	setOptions := SetOptions{
 		HomeDomain: NewHomeDomain("LovelyLumensLookLuminous.com"),
@@ -298,7 +298,7 @@ func TestSetOptionsHomeDomain(t *testing.T) {
 
 func TestSetOptionsHomeDomainTooLong(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484323")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484323))
 
 	setOptions := SetOptions{
 		HomeDomain: NewHomeDomain("LovelyLumensLookLuminousLately.com"),
@@ -318,7 +318,7 @@ func TestSetOptionsHomeDomainTooLong(t *testing.T) {
 func TestSetOptionsSigner(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484325")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484325))
 
 	setOptions := SetOptions{
 		Signer: &Signer{Address: kp1.Address(), Weight: Threshold(4)},
@@ -338,7 +338,7 @@ func TestSetOptionsSigner(t *testing.T) {
 
 func TestMultipleOperations(t *testing.T) {
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp1.Address(), "9606132444168199")
+	sourceAccount := NewSimpleAccount(kp1.Address(), int64(9606132444168199))
 
 	inflation := Inflation{}
 	bumpSequence := BumpSequence{
@@ -360,7 +360,7 @@ func TestMultipleOperations(t *testing.T) {
 func TestChangeTrust(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484348")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484348))
 
 	changeTrust := ChangeTrust{
 		Line:  CreditAsset{"ABCD", kp1.Address()},
@@ -381,7 +381,7 @@ func TestChangeTrust(t *testing.T) {
 
 func TestChangeTrustNativeAssetNotAllowed(t *testing.T) {
 	kp0 := newKeypair0()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484348")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484348))
 
 	changeTrust := ChangeTrust{
 		Line:  NativeAsset{},
@@ -403,7 +403,7 @@ func TestChangeTrustNativeAssetNotAllowed(t *testing.T) {
 func TestChangeTrustDeleteTrustline(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484354")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484354))
 
 	issuedAsset := CreditAsset{"ABCD", kp1.Address()}
 	removeTrust := RemoveTrustlineOp(issuedAsset)
@@ -423,7 +423,7 @@ func TestChangeTrustDeleteTrustline(t *testing.T) {
 func TestAllowTrust(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp0.Address(), "40385577484366")
+	sourceAccount := NewSimpleAccount(kp0.Address(), int64(40385577484366))
 
 	issuedAsset := CreditAsset{"ABCD", kp1.Address()}
 	allowTrust := AllowTrust{
@@ -447,7 +447,7 @@ func TestAllowTrust(t *testing.T) {
 func TestManageSellOfferNewOffer(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp1.Address(), "41137196761092")
+	sourceAccount := NewSimpleAccount(kp1.Address(), int64(41137196761092))
 
 	selling := NativeAsset{}
 	buying := CreditAsset{"ABCD", kp0.Address()}
@@ -470,7 +470,7 @@ func TestManageSellOfferNewOffer(t *testing.T) {
 
 func TestManageSellOfferDeleteOffer(t *testing.T) {
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp1.Address(), "41137196761105")
+	sourceAccount := NewSimpleAccount(kp1.Address(), int64(41137196761105))
 
 	offerID := int64(2921622)
 	deleteOffer, err := DeleteOfferOp(offerID)
@@ -491,7 +491,7 @@ func TestManageSellOfferDeleteOffer(t *testing.T) {
 func TestManageSellOfferUpdateOffer(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp1.Address(), "41137196761097")
+	sourceAccount := NewSimpleAccount(kp1.Address(), int64(41137196761097))
 
 	selling := NativeAsset{}
 	buying := CreditAsset{"ABCD", kp0.Address()}
@@ -516,7 +516,7 @@ func TestManageSellOfferUpdateOffer(t *testing.T) {
 func TestCreatePassiveSellOffer(t *testing.T) {
 	kp0 := newKeypair0()
 	kp1 := newKeypair1()
-	sourceAccount := NewSimpleAccount(kp1.Address(), "41137196761100")
+	sourceAccount := NewSimpleAccount(kp1.Address(), int64(41137196761100))
 
 	createPassiveOffer := CreatePassiveSellOffer{
 		Selling: NativeAsset{},
@@ -540,7 +540,7 @@ func TestCreatePassiveSellOffer(t *testing.T) {
 func TestPathPayment(t *testing.T) {
 	kp0 := newKeypair0()
 	kp2 := newKeypair2()
-	sourceAccount := NewSimpleAccount(kp2.Address(), "187316408680450")
+	sourceAccount := NewSimpleAccount(kp2.Address(), int64(187316408680450))
 
 	abcdAsset := CreditAsset{"ABCD", kp0.Address()}
 	pathPayment := PathPayment{
@@ -566,7 +566,7 @@ func TestPathPayment(t *testing.T) {
 
 func TestMemoText(t *testing.T) {
 	kp2 := newKeypair2()
-	sourceAccount := NewSimpleAccount(kp2.Address(), "3556099777101824")
+	sourceAccount := NewSimpleAccount(kp2.Address(), int64(3556099777101824))
 
 	tx := Transaction{
 		SourceAccount: &sourceAccount,
@@ -584,7 +584,7 @@ func TestMemoText(t *testing.T) {
 
 func TestMemoID(t *testing.T) {
 	kp2 := newKeypair2()
-	sourceAccount := NewSimpleAccount(kp2.Address(), "3428320205078528")
+	sourceAccount := NewSimpleAccount(kp2.Address(), int64(3428320205078528))
 
 	tx := Transaction{
 		SourceAccount: &sourceAccount,
@@ -601,7 +601,7 @@ func TestMemoID(t *testing.T) {
 
 func TestMemoHash(t *testing.T) {
 	kp2 := newKeypair2()
-	sourceAccount := NewSimpleAccount(kp2.Address(), "3428320205078528")
+	sourceAccount := NewSimpleAccount(kp2.Address(), int64(3428320205078528))
 
 	tx := Transaction{
 		SourceAccount: &sourceAccount,
@@ -618,7 +618,7 @@ func TestMemoHash(t *testing.T) {
 
 func TestMemoReturn(t *testing.T) {
 	kp2 := newKeypair2()
-	sourceAccount := NewSimpleAccount(kp2.Address(), "3428320205078528")
+	sourceAccount := NewSimpleAccount(kp2.Address(), int64(3428320205078528))
 
 	tx := Transaction{
 		SourceAccount: &sourceAccount,

@@ -1,16 +1,13 @@
 package txnbuild
 
 import (
-	"strconv"
-
-	"github.com/stellar/go/support/errors"
 	"github.com/stellar/go/xdr"
 )
 
-// SimpleAccount implements the Account interface.
+// SimpleAccount is a minimal implementation of an Account.
 type SimpleAccount struct {
 	AccountID string
-	Sequence  string
+	Sequence  int64
 }
 
 // GetAccountID returns the Account ID.
@@ -21,31 +18,17 @@ func (sa *SimpleAccount) GetAccountID() string {
 // IncrementSequenceNumber increments the internal record of the
 // account's sequence number by 1.
 func (sa *SimpleAccount) IncrementSequenceNumber() (xdr.SequenceNumber, error) {
-	seqNum, err := sa.GetSequenceNumber()
-	if err != nil {
-		return xdr.SequenceNumber(0), err
-	}
-	seqNum++
-	sa.Sequence = strconv.FormatInt(int64(seqNum), 10)
+	sa.Sequence++
 	return sa.GetSequenceNumber()
 }
 
 // GetSequenceNumber returns the sequence number of the account.
 func (sa *SimpleAccount) GetSequenceNumber() (xdr.SequenceNumber, error) {
-	seqNum, err := strconv.ParseUint(sa.Sequence, 10, 64)
-	if err != nil {
-		return 0, errors.Wrap(err, "Failed to parse account sequence number")
-	}
-
-	return xdr.SequenceNumber(seqNum), nil
+	return xdr.SequenceNumber(sa.Sequence), nil
 }
 
 // NewSimpleAccount is a factory method that creates a SimpleAccount from "accountID" and "sequence".
-// If "sequence" is not set, it defaults to 0.
-func NewSimpleAccount(accountID string, sequence string) SimpleAccount {
-	if sequence == "" {
-		sequence = "0"
-	}
+func NewSimpleAccount(accountID string, sequence int64) SimpleAccount {
 	return SimpleAccount{accountID, sequence}
 }
 
