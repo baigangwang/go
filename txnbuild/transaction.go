@@ -27,6 +27,7 @@ import (
 type Account interface {
 	GetAccountID() string
 	IncrementSequenceNumber() (xdr.SequenceNumber, error)
+	GetSequenceNumber() (xdr.SequenceNumber, error)
 }
 
 // Transaction represents a Stellar transaction. See
