@@ -5,7 +5,7 @@ file.  This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased [v1.2.0] 
 
-* In addition to account resoponses from horizon, transactions and operations can now be built with SimpleAccount structs constructed locally. 
+* In addition to account responses from horizon, transactions and operations can now be built with SimpleAccount structs constructed locally. 
 
 ## [v1.1.0](https://github.com/stellar/go/releases/tag/horizonclient-v1.1.0) - 2019-02-02
 
